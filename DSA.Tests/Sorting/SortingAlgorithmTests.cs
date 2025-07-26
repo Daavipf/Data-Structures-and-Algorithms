@@ -3,7 +3,7 @@ namespace DSA.Tests;
 public class SortingAlgorithmTests
 {
 
-    Sorting implementation = new MergeSortInPlace();
+    Sorting implementation = new MergeSort();
 
     [Fact]
     public void EvenArrayTest()
