@@ -33,6 +33,15 @@ public class MergeSortInPlace : Sorting
         int iRight = mid + 1;
         int iPlace = left;
 
+        (iLeft, iRight, iPlace) = CompareIndexesAndMerge(array, aux, iLeft, mid, iRight, right, iPlace);
+
+        CopyRestOfArray(array, aux, iRight, right, iPlace);
+        CopyRestOfArray(array, aux, iLeft, mid, iPlace);
+
+    }
+
+    private (int, int, int) CompareIndexesAndMerge(int[] array, int[] aux, int iLeft, int mid, int iRight, int right, int iPlace)
+    {
         while (iLeft <= mid && iRight <= right)
         {
             if (aux[iLeft] < aux[iRight])
@@ -48,17 +57,15 @@ public class MergeSortInPlace : Sorting
             iPlace++;
         }
 
-        while (iRight <= right)
-        {
-            array[iPlace] = aux[iRight];
-            iRight++;
-            iPlace++;
-        }
+        return (iLeft, iRight, iPlace);
+    }
 
-        while (iLeft <= mid)
+    private void CopyRestOfArray(int[] array, int[] aux, int index, int end, int iPlace)
+    {
+        while (index <= end)
         {
-            array[iPlace] = aux[iLeft];
-            iLeft++;
+            array[iPlace] = aux[index];
+            index++;
             iPlace++;
         }
     }
