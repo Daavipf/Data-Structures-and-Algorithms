@@ -22,7 +22,7 @@ Atualmente, o repositório contém implementações de **algoritmos de ordenaç�
 - Counting Sort
 - Radix Sort
 - Cocktail Sort
-- Comb Sort
+- Comb Sort (em breve)
 - Heap Sort (em breve)
 
 Cada algoritmo está devidamente estruturado com:
