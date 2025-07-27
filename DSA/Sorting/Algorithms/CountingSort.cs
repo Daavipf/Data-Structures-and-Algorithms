@@ -38,4 +38,6 @@ public class CountingSort : Sorting
             }
         }
     }
+
+    public override string ToString() => "CountingSort";
 }

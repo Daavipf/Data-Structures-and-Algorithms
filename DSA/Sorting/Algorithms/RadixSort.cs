@@ -39,4 +39,6 @@ public class RadixSort : Sorting
         for (int i = 0; i < arraySize; i++)
             array[i] = output[i];
     }
+
+    public override string ToString() => "RadixSort";
 }

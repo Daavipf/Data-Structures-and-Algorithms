@@ -26,4 +26,6 @@ public class SelectionSort : Sorting
 
         return smaller;
     }
+
+    public override string ToString() => "SelectionSort";
 }

@@ -52,4 +52,6 @@ public class QuickSort : Sorting
             (array[i], array[j]) = (array[j], array[i]);
         }
     }
+
+    public override string ToString() => "QuickSort";
 }

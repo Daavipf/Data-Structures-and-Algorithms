@@ -20,4 +20,6 @@ public class BubbleSort : Sorting
             if (!swapped) break;
         }
     }
+
+    public override string ToString() => "BubbleSort";
 }

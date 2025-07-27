@@ -20,4 +20,6 @@ public class InsertionSort : Sorting
             array[j + 1] = key;
         }
     }
+
+    public override string ToString() => "InsertionSort";
 }

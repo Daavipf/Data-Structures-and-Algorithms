@@ -60,4 +60,5 @@ public class MergeSort : Sorting
         }
     }
 
+    public override string ToString() => "MergeSort";
 }

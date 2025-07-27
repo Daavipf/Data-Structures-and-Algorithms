@@ -35,4 +35,6 @@ public class CocktailSort : Sorting
             start++;
         }
     }
+
+    public override string ToString() => "CocktailSort";
 }

@@ -17,7 +17,7 @@ Atualmente, o repositório contém implementações de **algoritmos de ordenaç�
 - Bubble Sort
 - Insertion Sort
 - Selection Sort
-- Merge Sort
+- Merge Sort (in-place e não in-place)
 - Quick Sort (com particionamento de Hoare e Lomuto)
 - Counting Sort
 - Radix Sort

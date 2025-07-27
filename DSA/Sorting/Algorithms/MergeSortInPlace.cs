@@ -69,4 +69,6 @@ public class MergeSortInPlace : Sorting
             iPlace++;
         }
     }
+
+    public override string ToString() => "MergeSortInPlace";
 }
