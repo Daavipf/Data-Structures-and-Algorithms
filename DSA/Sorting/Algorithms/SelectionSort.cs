@@ -4,21 +4,26 @@ public class SelectionSort : Sorting
 {
     public void Sort(int[] array)
     {
-        int size = array.Length;
-
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < array.Length; i++)
         {
-            int smaller = i;
-            for (int j = i + 1; j < size; j++)
-            {
-                if (array[j] < array[smaller])
-                {
-                    smaller = j;
-                }
-            }
+            int smaller = FindSmallerElement(array, i);
 
             if (smaller != i)
                 Util.Swap(array, smaller, i);
         }
+    }
+
+    private int FindSmallerElement(int[] array, int index)
+    {
+        int smaller = index;
+        for (int j = index + 1; j < array.Length; j++)
+        {
+            if (array[j] < array[smaller])
+            {
+                smaller = j;
+            }
+        }
+
+        return smaller;
     }
 }

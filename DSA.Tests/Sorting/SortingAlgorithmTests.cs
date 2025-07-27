@@ -3,7 +3,7 @@ namespace DSA.Tests;
 public class SortingAlgorithmTests
 {
 
-    Sorting implementation = new CountingSort();
+    Sorting implementation = new RadixSort();
 
     [Fact]
     public void EvenArrayTest()

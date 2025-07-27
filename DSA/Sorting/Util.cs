@@ -19,4 +19,18 @@ public class Util
 
         return true;
     }
+
+    public static int FindGreaterElement(int[] array)
+    {
+        int greater = array[0];
+        for (int i = 1; i < array.Length; i++)
+        {
+            if (array[i] > greater)
+            {
+                greater = array[i];
+            }
+        }
+
+        return greater;
+    }
 }
