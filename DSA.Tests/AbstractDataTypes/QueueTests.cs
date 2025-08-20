@@ -15,7 +15,7 @@ public class QueueTests
     [Fact]
     public void TestEmptyQueue()
     {
-        Assert.True(queue.IsEmpty());
+        Assert.True(queue.IsEmpty);
     }
 
     [Fact]
@@ -48,6 +48,6 @@ public class QueueTests
     [Fact]
     public void TestSize()
     {
-        Assert.Equal(0, queue.Size());
+        Assert.Equal(0, queue.Count);
     }
 }

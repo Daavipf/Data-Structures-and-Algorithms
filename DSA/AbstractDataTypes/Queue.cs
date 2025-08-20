@@ -4,7 +4,9 @@ public class Queue<T>
 {
     private T[] array;
     private const int defaultSize = 10;
-    private int nextAvailableIndex = -1;
+    private int head = 0;
+    private int tail = 0;
+    private int count = 0;
 
     public Queue()
     {
@@ -13,62 +15,51 @@ public class Queue<T>
 
     public Queue(int size)
     {
+        if (size <= 0)
+        {
+            throw new ArgumentOutOfRangeException("Tamanho da fila não pode ser negativo");
+        }
         array = new T[size];
     }
 
-    public bool IsEmpty()
-    {
-        return nextAvailableIndex == -1;
-    }
+    public int Count => count;
 
-    private bool IsFull()
-    {
-        return nextAvailableIndex == array.Length - 1;
-    }
+    public bool IsEmpty => count == 0;
+
+    private bool IsFull => count == array.Length;
 
     public void Enqueue(T element)
     {
-        if (IsFull())
+        if (IsFull)
         {
             throw new InvalidOperationException("A fila está cheia");
         }
-        nextAvailableIndex++;
-        array[nextAvailableIndex] = element;
+
+        array[tail] = element;
+        tail = (tail + 1) % array.Length;
+        count++;
     }
 
     public T Peek()
     {
-        if (IsEmpty())
+        if (IsEmpty)
         {
             throw new InvalidOperationException("A fila está vazia");
         }
 
-        return array[0];
+        return array[head];
     }
 
     public T Dequeue()
     {
-        if (IsEmpty())
+        if (IsEmpty)
         {
             throw new InvalidOperationException("A fila está vazia");
         }
 
-        T result = array[0];
-        ShiftElements(array);
-        nextAvailableIndex--;
+        T result = array[head];
+        head = (head + 1) % array.Length;
+        count--;
         return result;
-    }
-
-    private void ShiftElements(T[] array)
-    {
-        for (int i = 0; i < nextAvailableIndex; i++)
-        {
-            (array[i], array[i + 1]) = (array[i + 1], array[i]);
-        }
-    }
-
-    public int Size()
-    {
-        return nextAvailableIndex + 1;
     }
 }
