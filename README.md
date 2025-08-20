@@ -25,6 +25,11 @@ Atualmente, o repositório contém implementações de **algoritmos de ordenaç�
 - Comb Sort (em breve)
 - Heap Sort (em breve)
 
+Tipos Abstratos de Dados
+
+- Stack
+- Queue
+
 Cada algoritmo está devidamente estruturado com:
 
 - Métodos bem nomeados e responsabilidades únicas.
