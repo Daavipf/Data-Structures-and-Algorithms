@@ -1,11 +1,12 @@
+/*
 namespace DSA;
 
-public class LinkedList<T>
+public class LinkedListIterative<T> : IList<T>
 {
     public Node<T>? Head { get; set; }
     public int Count { get; private set; }
 
-    public LinkedList()
+    public LinkedListIterative()
     {
         Count = 0;
     }
@@ -134,3 +135,4 @@ public class LinkedList<T>
         return result.Data;
     }
 }
+*/
