@@ -14,7 +14,7 @@ public class CountingSort : Sorting
 
     private int[] PopulateCountingArray(int[] array)
     {
-        int greater = Util.FindGreaterElement(array);
+        int greater = Util<int>.FindGreaterElement(array);
 
         int[] countingArray = new int[greater + 1];
         for (int k = 0; k < array.Length; k++)

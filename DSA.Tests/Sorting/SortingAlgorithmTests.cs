@@ -9,7 +9,7 @@ public class SortingAlgorithmTests
         int[] arr = [1, 5, 2, 3, 8, 6, 0, 9];
         implementation.Sort(arr);
 
-        Assert.True(Util.IsSorted(arr));
+        Assert.True(Util<int>.IsSorted(arr));
     }
 
     [Theory]
@@ -19,7 +19,7 @@ public class SortingAlgorithmTests
         int[] arr = [1, 5, 2, 3, 8, 6, 0, 9, 7];
         implementation.Sort(arr);
 
-        Assert.True(Util.IsSorted(arr));
+        Assert.True(Util<int>.IsSorted(arr));
     }
 
 
@@ -30,7 +30,7 @@ public class SortingAlgorithmTests
         int[] arr = [1, 5, 2, 3, 8, 3, 0, 9, 3];
         implementation.Sort(arr);
 
-        Assert.True(Util.IsSorted(arr));
+        Assert.True(Util<int>.IsSorted(arr));
     }
 
     [Theory]
@@ -40,7 +40,7 @@ public class SortingAlgorithmTests
         int[] arr = [];
         implementation.Sort(arr);
 
-        Assert.True(Util.IsSorted(arr));
+        Assert.True(Util<int>.IsSorted(arr));
     }
 
     [Theory]
@@ -60,7 +60,7 @@ public class SortingAlgorithmTests
         int[] arr = [1, 1, 1, 1, 1];
         implementation.Sort(arr);
 
-        Assert.True(Util.IsSorted(arr));
+        Assert.True(Util<int>.IsSorted(arr));
     }
 
     [Theory]
@@ -80,7 +80,7 @@ public class SortingAlgorithmTests
         int[] arr = [9, 8, 7, 6, 5, 4, 3, 2, 1];
         implementation.Sort(arr);
 
-        Assert.True(Util.IsSorted(arr));
+        Assert.True(Util<int>.IsSorted(arr));
     }
 
     [Theory]
@@ -90,7 +90,7 @@ public class SortingAlgorithmTests
         int[] arr = [5, 1, 5, 1, 5, 1];
         implementation.Sort(arr);
 
-        Assert.True(Util.IsSorted(arr));
+        Assert.True(Util<int>.IsSorted(arr));
     }
 
 

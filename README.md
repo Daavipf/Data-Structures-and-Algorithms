@@ -30,6 +30,10 @@ Tipos Abstratos de Dados
 - Stack
 - Queue
 
+Árvores Binárias
+
+- Árvore Binária de Busca (ABB/BST)
+
 Cada algoritmo está devidamente estruturado com:
 
 - Métodos bem nomeados e responsabilidades únicas.

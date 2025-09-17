@@ -1,8 +1,8 @@
 namespace DSA;
 
-public class Util
+public class Util<T>
 {
-    public static void Swap(int[] array, int left, int right)
+    public static void Swap(T[] array, int left, int right)
     {
         (array[right], array[left]) = (array[left], array[right]);
     }

@@ -15,7 +15,7 @@ public class CocktailSort : Sorting
             {
                 if (array[i] > array[i + 1])
                 {
-                    Util.Swap(array, i, i + 1);
+                    Util<int>.Swap(array, i, i + 1);
                     swapped = true;
                 }
             }
@@ -28,7 +28,7 @@ public class CocktailSort : Sorting
             {
                 if (array[i] < array[i - 1])
                 {
-                    Util.Swap(array, i, i - 1);
+                    Util<int>.Swap(array, i, i - 1);
                     swapped = true;
                 }
             }

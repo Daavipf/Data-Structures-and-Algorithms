@@ -9,7 +9,7 @@ public class SelectionSort : Sorting
             int smaller = FindSmallerElement(array, i);
 
             if (smaller != i)
-                Util.Swap(array, smaller, i);
+                Util<int>.Swap(array, smaller, i);
         }
     }
 

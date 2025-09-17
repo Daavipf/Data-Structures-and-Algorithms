@@ -28,11 +28,11 @@ public class QuickSort : Sorting
             if (array[j] <= pivot)
             {
                 i++;
-                Util.Swap(array, i, j);
+                Util<int>.Swap(array, i, j);
             }
         }
 
-        Util.Swap(array, i + 1, right);
+        Util<int>.Swap(array, i + 1, right);
         return i + 1;
     }
 

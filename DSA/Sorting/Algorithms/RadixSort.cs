@@ -6,7 +6,7 @@ public class RadixSort : Sorting
     {
         if (array.Length > 0)
         {
-            int greater = Util.FindGreaterElement(array);
+            int greater = Util<int>.FindGreaterElement(array);
             int exp = 1;
 
             while (greater / exp > 0)

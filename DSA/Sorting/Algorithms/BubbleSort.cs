@@ -13,7 +13,7 @@ public class BubbleSort : Sorting
             {
                 if (array[j].CompareTo(array[j + 1]) > 0)
                 {
-                    Util.Swap(array, j, j + 1);
+                    Util<int>.Swap(array, j, j + 1);
                     swapped = true;
                 }
             }
