@@ -23,7 +23,7 @@ Atualmente, o repositório contém implementações de **algoritmos de ordenaç�
 - Radix Sort
 - Cocktail Sort
 - Comb Sort (em breve)
-- Heap Sort (em breve)
+- Heap Sort
 
 Tipos Abstratos de Dados
 
@@ -33,6 +33,7 @@ Tipos Abstratos de Dados
 Árvores Binárias
 
 - Árvore Binária de Busca (ABB/BST)
+- Heap Binária
 
 Cada algoritmo está devidamente estruturado com:
 

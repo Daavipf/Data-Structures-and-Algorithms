@@ -78,22 +78,22 @@ public class Heap<T> where T : IComparable<T>
     {
         int left = Left(position);
         int right = Right(position);
-        int largest = position;
+        int best = position;
 
-        if (left <= Index && Comparator.Compare(heap[left], heap[largest]) > 0)
+        if (left <= Index && Comparator.Compare(heap[left], heap[best]) > 0)
         {
-            largest = left;
+            best = left;
         }
 
-        if (right <= Index && Comparator.Compare(heap[right], heap[largest]) > 0)
+        if (right <= Index && Comparator.Compare(heap[right], heap[best]) > 0)
         {
-            largest = right;
+            best = right;
         }
 
-        if (largest != position)
+        if (best != position)
         {
-            Util<T>.Swap(heap, position, largest);
-            SiftDown(largest);
+            Util<T>.Swap(heap, position, best);
+            SiftDown(best);
         }
     }
 
@@ -130,5 +130,20 @@ public class Heap<T> where T : IComparable<T>
         SiftDown(0);
 
         return result;
+    }
+
+    public void HeapSort(T[] array)
+    {
+        BuildHeap(array);
+        int originalIndex = Index;
+
+        for (int i = Index; i > 0; i--)
+        {
+            Util<T>.Swap(heap, 0, i);
+            Index--;
+            SiftDown(0);
+        }
+
+        Index = originalIndex;
     }
 }

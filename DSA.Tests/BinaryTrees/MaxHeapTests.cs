@@ -86,4 +86,14 @@ public class MaxHeapTests
         Assert.Equal(30, heap.Root());
         Assert.Equal(expected, heap.ToArray());
     }
+
+    [Fact]
+    public void TestHeapsort()
+    {
+        var array = new int[] { 6, 1, 3, 4, 2, 5 };
+        var expected = new int[] { 1, 2, 3, 4, 5, 6 };
+        heap.HeapSort(array);
+        Assert.Equal(6, heap.Size());
+        Assert.Equal(expected, heap.ToArray());
+    }
 }
