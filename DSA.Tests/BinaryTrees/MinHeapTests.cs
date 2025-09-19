@@ -1,12 +1,12 @@
 namespace DSA.Tests;
 
-public class MaxHeapTests
+public class MinHeapTests
 {
-    private Comparator<int> comparator = new MaxHeapComparator<int>();
+    private Comparator<int> comparator = new MinHeapComparator<int>();
     private Heap<int> eHeap;
     private Heap<int> heap;
 
-    public MaxHeapTests()
+    public MinHeapTests()
     {
         heap = new Heap<int>(comparator);
         eHeap = new Heap<int>(comparator);
@@ -34,7 +34,7 @@ public class MaxHeapTests
     [Fact]
     public void TestToArray()
     {
-        var expected = new int[] { 40, 30, 15, 10, 20 };
+        var expected = new int[] { 10, 15, 30, 40, 20 };
         Assert.Equal(expected, heap.ToArray());
     }
 
@@ -49,9 +49,9 @@ public class MaxHeapTests
     [Fact]
     public void TestInsertHeapify()
     {
-        heap.Insert(45);
+        heap.Insert(5);
         Assert.False(heap.IsEmpty());
-        Assert.Equal(45, heap.Root());
+        Assert.Equal(5, heap.Root());
     }
 
     [Fact]
@@ -71,8 +71,8 @@ public class MaxHeapTests
     [Fact]
     public void TestBuildHeap()
     {
-        var array = new int[] { 1, 2, 3, 4, 5, 6 };
-        var expected = new int[] { 6, 5, 3, 4, 2, 1 };
+        var array = new int[] { 6, 5, 4, 3, 2, 1 };
+        var expected = new int[] { 1, 2, 4, 3, 5, 6 };
         heap.BuildHeap(array);
         Assert.Equal(6, heap.Size());
         Assert.Equal(expected, heap.ToArray());
@@ -81,9 +81,9 @@ public class MaxHeapTests
     [Fact]
     public void TestExtractRoot()
     {
-        var expected = new int[] { 30, 20, 15, 10 };
-        Assert.Equal(40, heap.ExtractRoot());
-        Assert.Equal(30, heap.Root());
+        var expected = new int[] { 15, 20, 30, 40 };
+        Assert.Equal(10, heap.ExtractRoot());
+        Assert.Equal(15, heap.Root());
         Assert.Equal(expected, heap.ToArray());
     }
 }

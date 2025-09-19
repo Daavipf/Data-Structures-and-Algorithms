@@ -38,7 +38,7 @@ public class Heap<T> where T : IComparable<T>
     public T[] ToArray()
     {
         List<T> result = new List<T>();
-        for (int i = 0; i < Index; i++)
+        for (int i = 0; i <= Index; i++)
         {
             result.Add(heap[i]);
         }
@@ -60,32 +60,75 @@ public class Heap<T> where T : IComparable<T>
 
         Index++;
         heap[Index] = element;
-
-
+        SiftUp(Index);
     }
 
-    private void Heapify(int position)
+    private void SiftUp(int position)
+    {
+        if (position == 0 || Comparator.Compare(heap[position], heap[Parent(position)]) <= 0)
+        {
+            return;
+        }
+
+        Util<T>.Swap(heap, position, Parent(position));
+        SiftUp(Parent(position));
+    }
+
+    private void SiftDown(int position)
     {
         int left = Left(position);
         int right = Right(position);
-        int best = position;
+        int largest = position;
 
-        if (left <= Index && Comparator.Compare(heap[left], heap[best]) < 0)
+        if (left <= Index && Comparator.Compare(heap[left], heap[largest]) > 0)
         {
-            best = left;
+            largest = left;
         }
 
-        // verifica se o filho da direita é "melhor"
-        if (right <= Index && Comparator.Compare(heap[right], heap[best]) < 0)
+        if (right <= Index && Comparator.Compare(heap[right], heap[largest]) > 0)
         {
-            best = right;
+            largest = right;
         }
 
-        // se algum filho for melhor, troca e continua heapify
-        if (best != position)
+        if (largest != position)
         {
-            Util<T>.Swap(heap, position, best);
-            Heapify(best);
+            Util<T>.Swap(heap, position, largest);
+            SiftDown(largest);
         }
+    }
+
+    public int Size()
+    {
+        return Index + 1;
+    }
+
+    public void BuildHeap(T[] array)
+    {
+        if (array is not null)
+        {
+            heap = array;
+            Index = array.Length - 1;
+
+            for (int i = Parent(Index); i >= 0; i--)
+            {
+                SiftDown(i);
+            }
+        }
+    }
+
+    public T ExtractRoot()
+    {
+        if (IsEmpty())
+        {
+            throw new Exception("Heap is empty");
+
+        }
+
+        T result = heap[0];
+        Index--;
+        heap[0] = heap[Index + 1];
+        SiftDown(0);
+
+        return result;
     }
 }
