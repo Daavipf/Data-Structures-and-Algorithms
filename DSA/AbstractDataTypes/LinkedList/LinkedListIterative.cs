@@ -1,138 +1,128 @@
-/*
 namespace DSA;
 
-public class LinkedListIterative<T> : IList<T>
+public class SinglyLinkedListIt<T> : IList<T> where T : IComparable<T>
 {
-    public Node<T>? Head { get; set; }
+    public Node<T>? Head { get; private set; }
     public int Count { get; private set; }
 
-    public LinkedListIterative()
+    public SinglyLinkedListIt()
     {
+        Head = null;
         Count = 0;
     }
 
-    public void Append(T element)
+    public void InsertLast(T element)
     {
+        Node<T> current = Head;
+        Node<T> newNode = new Node<T>(element);
+
         if (Head == null)
         {
-            Head = new Node<T>(element);
-        }
-        else
-        {
-            Node<T> currentNode = Head;
-            while (currentNode.Next != null)
-            {
-                currentNode = currentNode.Next;
-            }
-            currentNode.Next = new Node<T>(element);
-        }
-
-        Count++;
-    }
-
-    public void InsertAtBeginning(T element)
-    {
-        if (Head == null)
-        {
-            Head = new Node<T>(element);
-        }
-        else
-        {
-            Node<T> auxNode = Head;
-            Node<T> newNode = new Node<T>(element);
-            newNode.Next = auxNode;
             Head = newNode;
+            Count++;
         }
+        else
+        {
+            while (current.Next != null)
+            {
+                current = current.Next;
+            }
 
-        Count++;
+            current.Next = newNode;
+            Count++;
+        }
     }
 
+    public void InsertFirst(T element)
+    {
+        Node<T> newNode = new Node<T>(element);
+
+        if (Head == null)
+        {
+            Head = newNode;
+            Count++;
+        }
+        else
+        {
+            Node<T> tmp = Head;
+            Head = newNode;
+            newNode.Next = tmp;
+            Count++;
+        }
+    }
     public void InsertAt(T element, int index)
     {
+        Node<T> current = Head;
+        Node<T> newNode = new Node<T>(element);
+
         if (index < 0 || index > Count)
         {
-            throw new InvalidOperationException("Invalid index");
+            throw new IndexOutOfRangeException("Invalid index");
         }
 
-        if (Head == null)
+        if (index == 0)
         {
-            Head = new Node<T>(element);
-        }
-        else if (index == 0)
-        {
-            InsertAtBeginning(element);
+            newNode.Next = Head;
+            Head = newNode;
         }
         else
         {
-            Node<T> currentNode = Head;
-            int i = 0;
-            while (currentNode.Next != null && i < index - 1)
+            Node<T> previous = Head;
+            for (int j = 0; j < index - 1; j++)
             {
-                currentNode = currentNode.Next;
-                i++;
+                previous = previous.Next;
             }
-            currentNode.Next = new Node<T>(element);
 
+            newNode.Next = previous.Next;
+            previous.Next = newNode;
         }
 
         Count++;
     }
 
-    public T Get(int index)
+    public T Search(T element)
     {
-        if (index < 0 || index >= Count)
+        if (Count == 0)
         {
-            throw new IndexOutOfRangeException("Element not found");
+            throw new ArgumentOutOfRangeException(null, "The list is empty");
         }
 
-        Node<T> currentNode = Head;
+        Node<T> current = Head;
+
+        while (current != null)
+        {
+            if (current.Data.CompareTo(element) == 0)
+            {
+                return current.Data;
+            }
+
+            current = current.Next;
+        }
+
+        throw new ArgumentOutOfRangeException(null, "Element not found");
+    }
+
+    /*public T RemoveLast()
+    {
+        T r;
+        return r;
+    }
+    public T RemoveFirst() { }
+    public T Remove(T element) { }*/
+
+    public T[] ToArray()
+    {
+        T[] result = new T[Count];
+        Node<T> current = Head!;
         int i = 0;
-        while (i < index)
+
+        while (i < Count)
         {
-            currentNode = currentNode.Next;
+            result[i] = current!.Data;
             i++;
-        }
-        return currentNode.Data;
-    }
-
-    public bool Search(T element)
-    {
-        Node<T> currentNode = Head;
-        while (currentNode != null)
-        {
-            if (EqualityComparer<T>.Default.Equals(currentNode.Data, element))
-            {
-                return true;
-            }
-            currentNode = currentNode.Next;
-        }
-        return false;
-    }
-
-    public T Remove(T element)
-    {
-        if (!Search(element))
-        {
-            throw new InvalidOperationException("Element not Found");
+            current = current.Next!;
         }
 
-        Node<T> currentNode = Head;
-        Node<T> result = currentNode;
-        while (currentNode != null)
-        {
-            if (EqualityComparer<T>.Default.Equals(currentNode.Data, element))
-            {
-                currentNode.Data = currentNode.Next.Data;
-                currentNode.Next = currentNode.Next.Next;
-                result = currentNode;
-                break;
-            }
-            currentNode = currentNode.Next;
-        }
-
-        Count--;
-
-        return result.Data;
+        return result;
     }
 }
-*/

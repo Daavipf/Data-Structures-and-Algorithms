@@ -10,4 +10,9 @@ public class Node<T>
         Data = data;
         Next = null;
     }
+
+    public bool IsEmpty()
+    {
+        return Data == null;
+    }
 }
