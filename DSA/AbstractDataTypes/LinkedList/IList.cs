@@ -9,7 +9,7 @@ public interface IList<T>
     void InsertAt(T element, int index);
     T Search(T element);
     T[] ToArray();
-    /*T RemoveLast();
+    T RemoveLast();
     T RemoveFirst();
-    T Remove(T element);*/
+    T Remove(T element);
 }

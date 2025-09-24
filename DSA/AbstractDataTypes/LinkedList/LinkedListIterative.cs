@@ -13,13 +13,13 @@ public class SinglyLinkedListIt<T> : IList<T> where T : IComparable<T>
 
     public void InsertLast(T element)
     {
-        Node<T> current = Head;
+        Node<T> current = Head!;
         Node<T> newNode = new Node<T>(element);
 
         if (Head == null)
         {
             Head = newNode;
-            Count++;
+
         }
         else
         {
@@ -29,30 +29,21 @@ public class SinglyLinkedListIt<T> : IList<T> where T : IComparable<T>
             }
 
             current.Next = newNode;
-            Count++;
         }
+
+        Count++;
     }
 
     public void InsertFirst(T element)
     {
         Node<T> newNode = new Node<T>(element);
 
-        if (Head == null)
-        {
-            Head = newNode;
-            Count++;
-        }
-        else
-        {
-            Node<T> tmp = Head;
-            Head = newNode;
-            newNode.Next = tmp;
-            Count++;
-        }
+        newNode.Next = Head;
+        Head = newNode;
+        Count++;
     }
     public void InsertAt(T element, int index)
     {
-        Node<T> current = Head;
         Node<T> newNode = new Node<T>(element);
 
         if (index < 0 || index > Count)
@@ -84,14 +75,14 @@ public class SinglyLinkedListIt<T> : IList<T> where T : IComparable<T>
     {
         if (Count == 0)
         {
-            throw new ArgumentOutOfRangeException(null, "The list is empty");
+            throw new InvalidOperationException("The list is empty");
         }
 
         Node<T> current = Head;
 
         while (current != null)
         {
-            if (current.Data.CompareTo(element) == 0)
+            if (Equals(current.Data, element))
             {
                 return current.Data;
             }
@@ -99,28 +90,104 @@ public class SinglyLinkedListIt<T> : IList<T> where T : IComparable<T>
             current = current.Next;
         }
 
-        throw new ArgumentOutOfRangeException(null, "Element not found");
+        throw new KeyNotFoundException("Element not found");
     }
 
-    /*public T RemoveLast()
+    public T RemoveLast()
     {
-        T r;
-        return r;
+        if (Head == null)
+        {
+            throw new InvalidOperationException("The list is empty");
+        }
+
+        T result = Head.Data;
+
+        if (Head.Next == null)
+        {
+            result = Head.Data;
+            Head = null;
+        }
+        else
+        {
+            Node<T> current = Head;
+            while (current.Next != null)
+            {
+                if (current.Next.Next == null)
+                {
+                    result = current.Next.Data;
+                    current.Next = null;
+                    break;
+                }
+
+                current = current.Next;
+            }
+        }
+
+        Count--;
+        return result;
     }
-    public T RemoveFirst() { }
-    public T Remove(T element) { }*/
+    public T RemoveFirst()
+    {
+        if (Head == null)
+        {
+            throw new InvalidOperationException("The list is empty");
+        }
+
+        T result = Head.Data;
+
+        Head = Head.Next;
+
+        Count--;
+        return result;
+    }
+    public T Remove(T element)
+    {
+        if (Head == null)
+        {
+            throw new InvalidOperationException("The list is empty");
+        }
+
+        if (Equals(Head.Data, element))
+        {
+            T result = Head.Data;
+            Head = Head.Next;
+            Count--;
+            return result;
+        }
+
+        Node<T> current = Head;
+        while (current.Next != null)
+        {
+            if (Equals(current.Next.Data, element))
+            {
+                T result = current.Next.Data;
+                current.Next = current.Next.Next;
+                Count--;
+                return result;
+            }
+            current = current.Next;
+        }
+
+        throw new KeyNotFoundException("Element not found");
+
+    }
 
     public T[] ToArray()
     {
+        if (Head == null)
+        {
+            throw new InvalidOperationException("The list is empty");
+        }
+
         T[] result = new T[Count];
-        Node<T> current = Head!;
+        Node<T> current = Head;
         int i = 0;
 
         while (i < Count)
         {
-            result[i] = current!.Data;
+            result[i] = current.Data;
             i++;
-            current = current.Next!;
+            current = current.Next;
         }
 
         return result;

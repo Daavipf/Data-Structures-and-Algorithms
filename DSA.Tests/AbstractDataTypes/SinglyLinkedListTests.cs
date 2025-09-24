@@ -98,7 +98,7 @@ public class SinglyLinkedListTests
     [Fact]
     public void TestSearchEmptyList()
     {
-        var ex1 = Assert.Throws<ArgumentOutOfRangeException>(() => list.Search(2));
+        var ex1 = Assert.Throws<InvalidOperationException>(() => list.Search(2));
         Assert.Equal("The list is empty", ex1.Message);
     }
 
@@ -108,7 +108,75 @@ public class SinglyLinkedListTests
         list.InsertLast(1);
         list.InsertLast(2);
         list.InsertLast(3);
-        var ex1 = Assert.Throws<ArgumentOutOfRangeException>(() => list.Search(4));
+        var ex1 = Assert.Throws<KeyNotFoundException>(() => list.Search(4));
         Assert.Equal("Element not found", ex1.Message);
+    }
+
+    [Fact]
+    public void TestRemoveLast()
+    {
+        list.InsertLast(1);
+        list.InsertLast(2);
+        list.InsertLast(3);
+
+        Assert.Equal(3, list.RemoveLast());
+        Assert.Equal(2, list.Count);
+    }
+
+    [Fact]
+    public void TestRemoveFirst()
+    {
+        list.InsertLast(1);
+        list.InsertLast(2);
+        list.InsertLast(3);
+
+        Assert.Equal(1, list.RemoveFirst());
+        Assert.Equal(2, list.Count);
+        Assert.Equal(2, list.Head!.Data);
+    }
+
+    [Fact]
+    public void TestRemove()
+    {
+        list.InsertLast(1);
+        list.InsertLast(2);
+        list.InsertLast(3);
+
+        Assert.Equal(2, list.Remove(2));
+        Assert.Equal(2, list.Count);
+        Assert.Equal(1, list.Head!.Data);
+    }
+
+    [Fact]
+    public void TestRemoveSingleElement()
+    {
+        list.InsertLast(1);
+
+        Assert.Equal(1, list.Remove(1));
+        Assert.Equal(0, list.Count);
+    }
+
+    [Fact]
+    public void TestRemoveLastElementAltFun()
+    {
+        list.InsertLast(1);
+        list.InsertLast(2);
+        list.InsertLast(3);
+
+        Assert.Equal(3, list.Remove(3));
+        Assert.Equal(2, list.Count);
+        Assert.Equal(1, list.Head!.Data);
+    }
+
+    [Fact]
+    public void TestRemoveFirstElementAltFun()
+    {
+        list.InsertLast(1);
+        list.InsertLast(2);
+        list.InsertLast(3);
+
+        Assert.Equal(1, list.Remove(1));
+        Assert.Equal(2, list.Count);
+        Assert.Equal(2, list.Head!.Data);
     }
 }
