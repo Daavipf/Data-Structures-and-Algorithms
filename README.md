@@ -29,6 +29,7 @@ Tipos Abstratos de Dados
 
 - Stack
 - Queue
+- Lista Encadeada Simples
 
 Árvores Binárias
 
