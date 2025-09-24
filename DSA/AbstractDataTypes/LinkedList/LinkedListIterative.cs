@@ -1,6 +1,6 @@
 namespace DSA;
 
-public class SinglyLinkedListIt<T> : IList<T> where T : IComparable<T>
+public class SinglyLinkedListIt<T>
 {
     public Node<T>? Head { get; private set; }
     public int Count { get; private set; }

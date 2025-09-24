@@ -2,7 +2,7 @@ namespace DSA.Tests;
 
 public class SinglyLinkedListTests
 {
-    private IList<int> list = new SinglyLinkedListIt<int>();
+    private SinglyLinkedListIt<int> list = new SinglyLinkedListIt<int>();
 
     [Fact]
     public void TestInsertLast()
